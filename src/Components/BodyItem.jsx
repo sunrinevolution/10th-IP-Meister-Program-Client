@@ -5,10 +5,16 @@ const Wraper=styled.div`
 display:flex;
 flex-direction:column;
 width:25%;
+height:18vh;
+cursor:pointer;
+box-shadow:3px 3px 10px #C0C0C0;
+align-items:center;
+justify-content:center;
+;
 `
 const Image=styled.img`
 display:flex;
-width:100%;
+width:80%;
 `
 const Name=styled.h2`
 display:flex;

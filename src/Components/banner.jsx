@@ -4,7 +4,7 @@ import benner_image from '../assets/images/banner-image.jpg'
 
 const Wrapper=styled.div`
 width:100%;
-height:20%;
+height:20vh;
 display:flex;
 box-sizing:border-box;
 
