@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import {MainFontSize} from '../../assets/Datas'
+import {MiddleFontSize} from '../../assets/Datas'
+
+
 const Wraper=styled.div`
 display:flex;
 flex-direction:column;
-width:25%;
+width:33%;
 height:33%;
 cursor:pointer;
 align-items:center;
@@ -18,15 +20,14 @@ width:80%;
 const Name=styled.h2`
 display:flex;
 justify-content:center;
-font-size:${MainFontSize+5+'px'};
-font-weight:bold;
+font-size:${MiddleFontSize+5+'px'};
 `
 const Price=styled.h2`
 display:flex;
 display:flex;
 justify-content:center;
 color:red;
-font-size:${MainFontSize+'px'}
+font-size:${MiddleFontSize+'px'};
 `
 
 

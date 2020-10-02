@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import BodyItem from './BodyItem'
-import burger from '../../assets/images/burger.jpg'
+import {Product} from '../../assets/Datas'
 import styled from 'styled-components'
 
 const Wrapper=styled.div`
@@ -8,7 +8,8 @@ const Wrapper=styled.div`
 `
 const MiddleWrapper=styled.div`
 display:flex;
-height:80vw;
+height:60vh;
+
 
 `
 const OutSide=styled.div`
@@ -52,67 +53,12 @@ export default class Body extends Component {
             page:0,
             maxPage:0,
             total:0,
-            items:[{
-                img:burger,
-                name:"와규버거",
-                price:"2900"},{
-                    img:burger,
-                    name:"와규버거",
-                    price:"2900"},{
-                        img:burger,
-                        name:"와규버거",
-                        price:"2900"},{
-                            img:burger,
-                            name:"와규버거",
-                            price:"2900"},{
-                                img:burger,
-                                name:"와규버거",
-                                price:"2900"},{
-                img:burger,
-                name:"와규버거",
-                price:"2900"},{
-                    img:burger,
-                    name:"와규버거",
-                    price:"2900"},{
-                        img:burger,
-                        name:"와규버거",
-                        price:"2900"},{
-                            img:burger,
-                            name:"와규버거",
-                            price:"2900"},{
-                                img:burger,
-                                name:"와규버거",
-                                price:"2900"},{
-                                    img:burger,
-                                    name:"와규버거",
-                                    price:"2900"},{
-                    img:burger,
-                    name:"와규버거",
-                    price:"2900"},{
-                        img:burger,
-                        name:"와규버거",
-                        price:"2900"},{
-                            img:burger,
-                            name:"와규버거",
-                            price:"2900"},{
-                                img:burger,
-                                name:"와규버거",
-                                price:"2900"},{
-                                    img:burger,
-                                    name:"와규버거",
-                                    price:"2900"},{
-                                        img:burger,
-                                        name:"와규버거",
-                                        price:"2900"},{
-                        img:burger,
-                        name:"와규버거",
-                        price:"2900"},
-            ]
+          
         }
     }
     componentDidMount(){
         this.setState({
-            maxPage:parseInt(this.state.items.length/12)
+            maxPage:parseInt(Product.length/12)
         })
         
     }
@@ -132,7 +78,7 @@ export default class Body extends Component {
             <Item>
                 {
                     
-                    this.state.items.slice(this.state.page*12,(this.state.page*12)+12).map((item)=>{
+                    Product.slice(this.state.page*12,(this.state.page*12)+12).map((item)=>{
                       return  <BodyItem clickEvent={()=>this.setState({total:this.state.total+ parseInt(item.price)})} img={item.img} name={item.name} price={item.price}/>
                     })
                 }
