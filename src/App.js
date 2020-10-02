@@ -23,21 +23,15 @@ const GetCamer=()=>{
 
   // Not showing vendor prefixes.
   navigator.getUserMedia({video: true, audio: true}, function(localMediaStream) {
-    var video = document.querySelector('video');
-    video.src = window.URL.createObjectURL(localMediaStream);
-
-    // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
-    // See crbug.com/110938.
-    video.onloadedmetadata = function(e) {
-      // Ready to go. Do some stuff.
-    };
+    let player=document.getElementById('player')
+    player.srcObject=localMediaStream
+    // player.src=URL.createObjectURL(localMediaStream)
   }, onFailSoHard);
 }
 
 function App() {
   return (
    <>
-   {GetCamer()}
    <GlobalStyle/>
 
 <Router>
@@ -50,6 +44,12 @@ function App() {
   </Route>
   <Route path='/Senior' exact>
     <SeniorPage/>
+  </Route>
+
+  <Route path='/video' exact>
+   {}
+   <button onClick={GetCamer}>비디오 시작!</button>
+    <video autoPlay uri='https://www.youtube.com' id='player'></video>
   </Route>
      </Router>
  
