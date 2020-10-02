@@ -1,10 +1,10 @@
 import React from "react"
 import styled from 'styled-components'
-import benner_image from '../assets/images/banner-image.jpg'
+import benner_image from '../../assets/images/2020ipmp.PNG'
 
 const Wrapper=styled.div`
 width:100%;
-height:20%;
+height:20vh;
 display:flex;
 box-sizing:border-box;
 
@@ -21,14 +21,8 @@ const Banner = props => {
 
         return (
         <>
-                <Wrapper>
+                <Wrapper onClick={()=>window.location.href='/Middle'}>
                         <Image src={benner_image}/>
-                        
-
-                        
-
-
-                        
                 </Wrapper>
         </>
         )

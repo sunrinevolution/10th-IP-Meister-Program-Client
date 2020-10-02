@@ -1,17 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
-import {percent20} from '../assets/Init'
+import {percent20} from '../../assets/Init'
 const Ul=styled.ul`
 width:100%;
-height:${(props)=>props.height||'396px'};
+height:15vh;
 display:flex;
 flex-wrap:wrap;
     
     li:nth-child(${(props)=>props.child||0}){
         color:#D50D0D;  
+        /* box-shadow:1px 1px 10px #800000; */
+        border-color:#800000;
     }
 `
 const Li=styled.li`
+
 display:flex;
 color:#817D7D;
 width:25%;
