@@ -1,6 +1,6 @@
 import React from "react"
 import styled from 'styled-components'
-import benner_image from '../assets/images/banner-image.jpg'
+import benner_image from '../../assets/images/2020ipmp.PNG'
 
 const Wrapper=styled.div`
 width:100%;
@@ -23,12 +23,6 @@ const Banner = props => {
         <>
                 <Wrapper>
                         <Image src={benner_image}/>
-                        
-
-                        
-
-
-                        
                 </Wrapper>
         </>
         )

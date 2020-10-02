@@ -5,9 +5,8 @@ const Wraper=styled.div`
 display:flex;
 flex-direction:column;
 width:25%;
-height:18vh;
+height:33%;
 cursor:pointer;
-box-shadow:3px 3px 10px #C0C0C0;
 align-items:center;
 justify-content:center;
 ;
@@ -31,10 +30,10 @@ color:red;
 
 function BodyItem(props) {
     return (
-        <Wraper>
+        <Wraper onClick={()=>props.clickEvent()}>
             <Image src={props.img}/>
             <Name>{props.name}</Name>
-            <Price>{props.price}</Price>
+            <Price>{parseInt(props.price).toLocaleString()}원</Price>
         </Wraper>
     )
 }

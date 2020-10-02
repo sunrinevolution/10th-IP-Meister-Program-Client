@@ -1,8 +1,6 @@
 import React from 'react';
-import Banner from './Components/banner';
-import Category from './Components/Category'
 import {createGlobalStyle} from 'styled-components'
-import Body from './Components/Body';
+import MainPage from './Pages/MainPage'
 const GlobalStyle = createGlobalStyle`
   *{
     margin:0;
@@ -18,9 +16,7 @@ function App() {
   return (
    <>
    <GlobalStyle/>
-   <Banner/>
-   <Category/>
-   <Body/>
+   <MainPage/>
    </>
   );
 }
