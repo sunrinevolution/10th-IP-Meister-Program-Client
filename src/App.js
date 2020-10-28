@@ -3,7 +3,43 @@ import {Route,BrowserRouter as Router} from 'react-router-dom'
 import {createGlobalStyle} from 'styled-components'
 import MainPage from './Pages/MainPage'
 import SeniorPage from './Pages/SeniorPage'
-import MiddlePage from './Pages/MiddlePage';
+import MiddlePage from './Pages/MiddlePage'
+import MenuPage from './Pages/MenuPage'
+
+import socketio from 'socket.io-client'
+
+const socket = socketio.connect('http://localhost:5000/kiosk');
+
+const init=()=>{
+    socket.on("response", (data) => console.log(data))
+    socket.on("responses", (data) => console.log(data))
+    socket.emit('connect', { name: 'bella' });
+
+    socket.on("getImage", (data) => {
+      let age =data['age']
+      console.log(age)
+      if (age<30){
+        window.location.href='/Junior'
+      }
+      else if (age<50){
+        window.location.href='/Middle'
+      }
+      else{
+        window.location.href='/Senior'
+        
+      }
+    })
+
+    
+}
+
+const goUi = () => {
+  console.log("클릭")
+  socket.emit("request", {data: "connect" })
+  
+    socket.emit("getImage", {time:10  })
+  
+}
 const GlobalStyle = createGlobalStyle`
   *{
     margin:0;
@@ -31,11 +67,15 @@ const GetCamer=()=>{
 
 function App() {
   return (
-   <>
+   < >
    <GlobalStyle/>
-
+{init()}
 <Router>
-<Route path='/' exact>
+   <Route path='/' exact>
+     <MenuPage goUi={goUi}></MenuPage>
+   {/* <button onClick={goUi}>시작</button> */}
+  </Route>
+<Route path='/Junior' exact>
      <MainPage/>
   </Route>
 
@@ -50,6 +90,7 @@ function App() {
    {}
    <button onClick={GetCamer}>비디오 시작!</button>
     <video autoPlay uri='https://www.youtube.com' id='player'></video>
+    <button onClick={goUi}>소켓테스트</button>
   </Route>
      </Router>
  

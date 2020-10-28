@@ -21,7 +21,7 @@ const Banner = props => {
 
         return (
         <>
-                <Wrapper onClick={()=>window.location.href='/senior'}>
+                <Wrapper onClick={()=>window.location.href='/'}>
                         <Image src={benner_image}/>
                 </Wrapper>
         </>
