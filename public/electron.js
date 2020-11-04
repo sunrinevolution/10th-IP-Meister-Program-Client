@@ -10,15 +10,18 @@ function createWindow() {
         // 이것들은 제가 사용하는 설정이니 각자 알아서 설정 하십시오.
         //alwaysOnTop: true,
         center: true,
-        //fullscreen: true,
+        // fullscreen: true,
         kiosk: !isDev,
-        resizable: true,
+        frame: false,
         webPreferences: {
             // 2.
             // 웹 애플리케이션을 데스크탑으로 모양만 바꾸려면 안 해도 되지만,
             // Node 환경처럼 사용하려면 (Node에서 제공되는 빌트인 패키지 사용 포함)
             // true 해야 합니다.
-            nodeIntegration: true
+            nodeIntegration: true,
+            nodeIntegrationInWorker: true,
+            webSecurity: false,
+            enableRemoteModule: false
         }
     });
     // 3. and load the index.html of the app.

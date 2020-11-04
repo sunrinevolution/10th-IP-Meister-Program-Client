@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {percent20} from '../../assets/Init'
+import {percent20} from '../assets/Init'
 const Ul=styled.ul`
 width:100%;
 height:15vh;

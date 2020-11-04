@@ -1,16 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import {SeniorFontSize} from '../../assets/Datas'
+import {MiddleFontSize} from '../assets/Datas'
+
+
 
 const Wraper=styled.div`
 display:flex;
 flex-direction:column;
-width:50%;
-height:50%;
+width:${props=>props.itemWidth||0};
+height:${props=>props.itemWidth||0};
 cursor:pointer;
 align-items:center;
 justify-content:center;
-;
+
+&:active{
+filter:brightness(80%);
+}
 `
 const Image=styled.img`
 display:flex;
@@ -19,24 +24,23 @@ width:80%;
 const Name=styled.h2`
 display:flex;
 justify-content:center;
-font-size:${SeniorFontSize+5+'px'};
+font-size:${props=>props.fontSize+5+'px'};
 `
 const Price=styled.h2`
 display:flex;
 display:flex;
 justify-content:center;
 color:red;
-font-size:${SeniorFontSize+'px'};
+font-size:${props=>props.fontSize+'px'};
 `
-
 
 
 function BodyItem(props) {
     return (
-        <Wraper onClick={()=>props.clickEvent()}>
+        <Wraper  itemWidth={props.itemWidth} onClick={()=>props.clickEvent()}>
             <Image src={props.img}/>
-            <Name>{props.name}</Name>
-            <Price>{parseInt(props.price).toLocaleString()}원</Price>
+            <Name fontSize={props.fontSize}>{props.name}</Name>
+            <Price fontSize={props.fontSize}>{parseInt(props.price).toLocaleString()}원</Price>
         </Wraper>
     )
 }

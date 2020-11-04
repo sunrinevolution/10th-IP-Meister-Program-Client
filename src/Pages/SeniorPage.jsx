@@ -1,13 +1,15 @@
 import React from 'react'
-import Banner from '../Components/SeniorPageComponents/banner'
-import Category from '../Components/SeniorPageComponents/Category'
-import Body from '../Components/SeniorPageComponents/Body'
-export default function SeniorPage() {
+import Banner from '../Components/banner'
+import Category from '../Components/Category'
+import Body from '../Components/Body'
+export default function SeniorPage(props) {
     return (
         <>
             <Banner/>
             <Category/>
-            <Body/>
+            <Body page={4} fontSize={30} age='senior' socket={props.socket} voice_order={props.voice_order}/>
+
+            
         </>
     )
 }

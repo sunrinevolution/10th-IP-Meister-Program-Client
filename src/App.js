@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route,BrowserRouter as Router} from 'react-router-dom'
+import {Route,HashRouter as Router} from 'react-router-dom'
 import {createGlobalStyle} from 'styled-components'
 import MainPage from './Pages/MainPage'
 import SeniorPage from './Pages/SeniorPage'
@@ -7,25 +7,25 @@ import MiddlePage from './Pages/MiddlePage'
 import MenuPage from './Pages/MenuPage'
 
 import socketio from 'socket.io-client'
+import { getToken } from './assets/api';
 
 const socket = socketio.connect('http://localhost:5000/kiosk');
 
-const init=()=>{
-    socket.on("response", (data) => console.log(data))
-    socket.on("responses", (data) => console.log(data))
-    socket.emit('connect', { name: 'bella' });
 
+
+const init=()=>{
+    getToken()
     socket.on("getImage", (data) => {
       let age =data['age']
-      console.log(age)
+      console.log('predicted age : '+age)
       if (age<30){
-        window.location.href='/Junior'
+        window.location.href='#/Junior'
       }
       else if (age<50){
-        window.location.href='/Middle'
+        window.location.href='#/Middle'
       }
       else{
-        window.location.href='/Senior'
+        window.location.href='#/Senior'
         
       }
     })
@@ -33,8 +33,13 @@ const init=()=>{
     
 }
 
+
+
+const voice_order=()=>{
+  socket.emit('voice recognition')  
+}
+
 const goUi = () => {
-  console.log("클릭")
   socket.emit("request", {data: "connect" })
   
     socket.emit("getImage", {time:10  })
@@ -70,20 +75,20 @@ function App() {
    < >
    <GlobalStyle/>
 {init()}
-<Router>
+<Router basename={process.env.REACT_APP_ROUTER_BASE || ''}>
    <Route path='/' exact>
      <MenuPage goUi={goUi}></MenuPage>
    {/* <button onClick={goUi}>시작</button> */}
   </Route>
 <Route path='/Junior' exact>
-     <MainPage/>
+     <MainPage socket={socket} voice_order={voice_order}/>
   </Route>
 
   <Route path='/Middle' exact>
-     <MiddlePage/>
+     <MiddlePage socket={socket} voice_order={voice_order}/>
   </Route>
   <Route path='/Senior' exact>
-    <SeniorPage/>
+    <SeniorPage socket={socket} voice_order={voice_order}/>
   </Route>
 
   <Route path='/video' exact>
